@@ -23,4 +23,5 @@
     	<property name="prefix" value="/"></property> <!-- 默认放在WebRoot下 -->
     	<property name="surfix" value=".jsp"></property>
     </bean>
+    
 </beans>
