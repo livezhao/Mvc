@@ -9,6 +9,37 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  <!-- 加载spring容器配置 --><!-- 实现ServletContextListener接口 -->
+  <!-- <listener>
+  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener> -->
+  
+  <!-- 系统启动时，可以同时启动，实现ServletContextListener接口，可以启动一个线程等操作 -->
+  <listener>
+  	<display-name>startThreadHelloWorld</display-name>
+  	<listener-class>com.relive.listener.HelloListener</listener-class>
+  </listener>
+  
+  <!-- <listener>
+  	<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+  </listener> -->
+  
+  <!-- <context-param>
+  	<param-name>contextConfigLocation</param-name>
+  	<param-value>/WEB-INF/conf/springMVC.xml</param-value>
+  </context-param> -->
+  
+  <servlet>
+  	<servlet-name>helloServlet</servlet-name>
+  	<servlet-class>com.relive.servlet.HelloServlet</servlet-class>
+	<load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>helloServlet</servlet-name>
+  	<url-pattern>/helloServlet/*</url-pattern>
+  </servlet-mapping>
+  
   <servlet>
   	<servlet-name>springMVC</servlet-name>
   	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -21,5 +52,14 @@
   <servlet-mapping>
   	<servlet-name>springMVC</servlet-name>
   	<url-pattern>/</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>cxfServlet</servlet-name>
+  	<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>cxfServlet</servlet-name>
+  	<url-pattern>/webservice/*</url-pattern>
   </servlet-mapping>
 </web-app>
